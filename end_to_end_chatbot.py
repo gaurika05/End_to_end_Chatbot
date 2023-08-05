@@ -28,12 +28,17 @@ intents = [
     {
         "tag": "problems",
         "patterns": ["The delivered item is damaged.", "I have received a wrong item or order", "I have not received my order."],
-        "responses":["Sorry for the inconvenience caused. Please share the photo of the damaged item on this WhatsApp no. +91xxxxxxxxxx", "We are truly sorry for the inconvenience. Please share your order id on this WhatsApp no. +91xxxxxxxxxx."]
+        "responses": ["We are truly sorry for the inconvenience. Please share your order id on this WhatsApp no. +91xxxxxxxxxx."]
+    },
+    {
+        "tag": "damage issue",
+        "patterns": ["The delivered item is damaged"],
+        "responses": ["Sorry for the inconvenience caused. Please share the photo of the damaged item on this WhatsApp no. +91xxxxxxxxxx"]
     },
     {
         "tag": "thanks",
         "patterns": ["Thank you", "Thanks", "Thanks a lot", "I appreciate it", "I am grateful", "Thanks for your help"],
-        "responses": ["Thank you.\n I Hope all your queries are resolved.\n Have a great day."]
+        "responses": ["Thank you.\n I Hope all your queries are resolved.\n Have a great day.", "Thank you", "thanks"]
     },
     {
         "tag": "help",
@@ -81,7 +86,7 @@ def main():
         response = chatbot(user_input)
         st.text_area("Chatbot:", value=response, height=100, max_chars=None, key=f"chatbot_response_{counter}")
 
-        if response.lower() in ["Thank you", "Thanks", "Thanks a lot", "I appreciate it", "I am grateful", "Thanks for your help"]:
+        if response.lower() in ['thank you', 'thanks']:
             st.write("Thank you for chatting with me. Have a great day!")
             st.stop()
 
